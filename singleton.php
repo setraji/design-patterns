@@ -29,5 +29,3 @@ class Logfile {
 // test:
 $log = Logfile::getInstance();
 $log->write("log entry xyz");
-
-?>
