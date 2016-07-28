@@ -1,3 +1,3 @@
 # design-patterns
 
-test-..... sdddfsgsd
+Examples, written in php...
