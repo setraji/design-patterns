@@ -11,7 +11,6 @@ interface Observeable {
 }
 
 class Kalender implements Observeable {
-
 	private $_observers = Array();
 	public $datum = null;
 
@@ -34,7 +33,6 @@ class Kalender implements Observeable {
 		$this->notify();
 		echo "Heute ist der " . $datum_in . "<br/>";
 	}
-
 }
 
 class Neujahr implements Observer {
