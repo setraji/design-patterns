@@ -32,13 +32,13 @@ class Backup {
 	}
 }
 
-$programming = new Programming('Memento Pattern');
+$programming = new Programming('Creation of a database');
 $backup = new Backup($programming);
 echo $programming->getWriting() . "<br/>";
-$programming->setWriting("Memento Pattern extended");
+$programming->setWriting("Database entry");
 $backup->setWriting($programming);
 echo $programming->getWriting() . "<br/>";
-$programming->setWriting("Memento Pattern extended with bug");
+$programming->setWriting("Wrong database entry");
 echo $programming->getWriting() . "<br/>";  
 $backup->getWriting($programming);
 echo $programming->getWriting() . "<br/>";
