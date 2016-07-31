@@ -32,7 +32,7 @@ class Backup {
 	}
 }
 
-$programming = new Programming('Creation of a database');
+$programming = new Programming("Creation of a database");
 $backup = new Backup($programming);
 echo $programming->getWriting() . "<br/>";
 $programming->setWriting("Database has correct entries");
