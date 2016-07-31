@@ -35,10 +35,10 @@ class Backup {
 $programming = new Programming('Creation of a database');
 $backup = new Backup($programming);
 echo $programming->getWriting() . "<br/>";
-$programming->setWriting("Database entry");
+$programming->setWriting("Database with correct entries");
 $backup->setWriting($programming);
 echo $programming->getWriting() . "<br/>";
-$programming->setWriting("Wrong database entry");
+$programming->setWriting("Database with incorrect entries");
 echo $programming->getWriting() . "<br/>";  
 $backup->getWriting($programming);
 echo $programming->getWriting() . "<br/>";
