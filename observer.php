@@ -1,16 +1,16 @@
 <?php 
 
-interface Observer {
-	public function update(Observeable $subject);
+abstract class Observer {
+	abstract function update(Observeable $subject);
 }
 
-interface Observeable {
-	public function attach(Observer $observer);
-	public function detach(Observer $observer);
-	public function notify();
+abstract class Observeable {
+	abstract function attach(Observer $observer);
+	abstract function detach(Observer $observer);
+	abstract function notify();
 }
 
-class Kalender implements Observeable {
+class Kalender extends Observeable {
 	private $_observers = Array();
 	public $datum = null;
 
@@ -35,7 +35,7 @@ class Kalender implements Observeable {
 	}
 }
 
-class Neujahr implements Observer {
+class Neujahr extends Observer {
 	public function update(Observeable $subject) {
 		if ($subject->datum == "01.01.") {
 			echo "Happy new year!!! ";
