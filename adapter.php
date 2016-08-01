@@ -24,8 +24,7 @@ class Oracle {
 	}
 }
 
-class MariaDbOracleAdapter
-{
+class MariaDbOracleAdapter {
 	private $mariadb;
 	private $oracle;
 
