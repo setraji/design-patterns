@@ -1,8 +1,8 @@
 <?php
 
 interface Handler {
-    public function setSuccessor($nextService);
-    public function handleRequest($request);
+	public function setSuccessor($nextService);
+	public function handleRequest($request);
 }
 
 class Add implements Handler {
