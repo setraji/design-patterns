@@ -71,6 +71,5 @@ class Client {
 		$add->handleRequest($loadup);
 	}
 }
-	
-$queryNow = "multiply";
-$makeRequest = new Client($queryNow);
+
+$makeRequest = new Client("multiply");
