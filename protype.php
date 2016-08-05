@@ -35,7 +35,5 @@ $kaefer = clone $volkswagen;
 $golf->setCartype("Golf");
 $kaefer->setCartype("Käfer");
 
-echo $golf->getCarname() . "<br />";
-echo $golf->getCartype() . "<br />";
-echo $kaefer->getCarname() . "<br />";
-echo $kaefer->getCartype() . "<br />";
+echo $golf->getCarname() . " " . $golf->getCartype() . "<br />";
+echo $kaefer->getCarname() . " " . $kaefer->getCartype() . "<br />";
