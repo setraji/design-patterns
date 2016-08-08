@@ -1,26 +1,27 @@
 <?php
 
 class ProxyAccessTest {
-    private $bookList; 
-    private $book;
+    private $access; 
+    private $phrase;
     private $pw;
     
-    public function __construct(Access $inBook, $passwd) {
-        $this->book = $inBook;
+    public function __construct(Access $phrase_in, $passwd) {
+        $this->phrase = $phrase_in;
         $this->pw = $passwd;
     }
+
     public function getPhraseOrDenial() {
         
         if ($this->pw == "foobar") {
-            $this->makeBookList();
-            $this->bookList->getPhraseOrDenial($this->book->getPhrase());
+            $this->getPhrase();
+            $this->access->getPhraseOrDenial($this->phrase->getPhrase());
         } else {
            echo "no access";
         }
     }
 
-    function makeBookList() {
-        $this->bookList = new AccessTest();
+    function getPhrase() {
+        $this->access = new AccessTest();
     }
 }
 
