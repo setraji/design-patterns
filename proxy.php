@@ -11,7 +11,6 @@ class ProxyAccessTest {
     }
 
     public function getPhraseOrDenial() {
-        
         if ($this->pw == "foobar") {
             $this->getPhrase();
             $this->access->getPhraseOrDenial($this->phrase->getPhrase());
