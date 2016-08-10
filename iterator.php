@@ -28,7 +28,7 @@ class Cars implements Iterator {
         ++$this->pointer;
     }
 
-    public function valid() {
+    function valid() {
         return isset($this->array[$this->pointer]);
     }
 }
