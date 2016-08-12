@@ -47,15 +47,22 @@ class XMLPage {
 
     function formatPage() {
         $this->page = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>";
-        $this->page .= "<verzeichnis>" . $this->page_text . "</verzeichnis>";
+        $this->page .= "<text>" . $this->page_text . "</text>";
     }
 }
 
 class PageBuilder extends AbstractPageBuilder {
     private $page = null;
 
-    function __construct() {
-        $this->page = new HTMLPage();
+    function __construct($strategy_case) {
+        switch ($strategy_case) {
+            case "HTML":
+                $this->page = new HTMLPage();
+                break;
+            case "XML":
+                $this->page = new XMLPage();
+                break;
+        }
     }
 
     function setText($text_in) {
@@ -88,7 +95,7 @@ class PageDirector extends AbstractPageDirector {
     }
 }
 
-$pageBuilder = new PageBuilder();
+$pageBuilder = new PageBuilder("XML");
 $pageDirector = new PageDirector($pageBuilder);
 $pageDirector->buildPage();
 $page = $pageDirector->GetPage();
