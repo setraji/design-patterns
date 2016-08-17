@@ -92,12 +92,12 @@ $reise1 = new Fliegen("Madrid", "Flugzeug");
 $reise2 = new Fahren("Hamburg", "Auto", 2);
 $reisender = new Reisender();
 
-acceptVisitor($reise1, $reisender);
+empfangeBesucher($reise1, $reisender);
 echo $reisender->getAusgabe() . "<br />";
-acceptVisitor($reise2, $reisender);
+empfangeBesucher($reise2, $reisender);
 echo $reisender->getAusgabe() . "<br />";
 
-function acceptVisitor(Reisen $reisen, Besucher $besucher)
+function empfangeBesucher(Reisen $reisen, Besucher $besucher)
 {
     $reisen->empfangen($besucher);
 }
