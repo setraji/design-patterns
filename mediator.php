@@ -1,103 +1,108 @@
 <?php
 
 class Mediator {
-    private $authorObject;
-    private $titleObject;
-    function __construct() {
-      $this->authorObject = new BookAuthorColleague($this);
-      $this->titleObject  = new BookTitleColleague($this);
+    private $chatter_one;
+    private $chatter_two;
+
+    public function __construct() {
+        $this->chatter_one = new ChatterOneColleague($this);
+        $this->chatter_two = new ChatterTwoColleague($this);
     }
-    function getAuthor() {return $this->authorObject;}
-    function getTitle() {return $this->titleObject;}
-    // when title or author change case, this makes sure the other
-    // stays in sync
-    function change(BookColleague $changingClassIn) {
-      if ($changingClassIn instanceof BookAuthorColleague) {
-        $this->getTitle()->setTitle($changingClassIn->getAuthor());
-        $this->getAuthor()->setAuthor($changingClassIn->getAuthor());
-      } elseif ($changingClassIn instanceof BookTitleColleague) {
-        $this->getTitle()->setTitle($changingClassIn->getTitle());
-        $this->getAuthor()->setAuthor($changingClassIn->getTitle());
-      }
+
+    public function getChatterOne() {
+        return $this->chatter_one;
+    }
+
+    public function getChatterTwo() {
+        return $this->chatter_two;
+    }
+
+    public function change(ChatterColleague $changing) {
+        if ($changing instanceof ChatterOneColleague) {
+            $this->getChatterOne()->setChatterOne($changing->getChatterOne());
+            $this->getChatterTwo()->setChatterTwo($changing->getChatterOne());
+        }
+        else if ($changing instanceof ChatterTwoColleague) {
+            $this->getChatterOne()->setChatterOne($changing->getChatterTwo());
+            $this->getChatterTwo()->setChatterTwo($changing->getChatterTwo());
+        }
     }
 }
 
-abstract class BookColleague {
+abstract class ChatterColleague {
     private $mediator;
-    function __construct($mediator_in) {
+
+    public function __construct($mediator_in) {
         $this->mediator = $mediator_in;
     }
-    function getMediator() {return $this->mediator;}
-    function changed($changingClassIn) {
-        getMediator()->titleChanged($changingClassIn);
+
+    public function getMediator() {
+        return $this->mediator;
     }
 }
 
-class BookAuthorColleague extends BookColleague {
-    private $author;
-    function __construct($mediator_in) {
-      parent::__construct($mediator_in);
-    }
-    function getAuthor() {return $this->author;}
-    function setAuthor($author_in) {$this->author = $author_in;}
+class ChatterOneColleague extends ChatterColleague {
+    private $chatter_one;
 
-    function setAuthorLowerCase($message) {
-      $this->setAuthor($message);
-      $this->getMediator()->change($this);
-    }
-}
-
-class BookTitleColleague extends BookColleague {
-    private $title;
-    function __construct($mediator_in) {
+    public function __construct($mediator_in) {
         parent::__construct($mediator_in);
     }
-    function getTitle() {return $this->title;}
-    function setTitle($title_in) {$this->title = $title_in;}
- 
-    function setTitleLowerCase($message) {
-        $this->setTitle($message);
+
+    public function getChatterOne() {
+        return $this->chatter_one;
+    }
+
+    public function setChatterOne($chatter_one_in) {
+        $this->chatter_one = $chatter_one_in;
+    }
+
+    public function setChatterOneMessage($message) {
+        $this->setChatterOne($message);
         $this->getMediator()->change($this);
     }
 }
- 
- 
 
-  $mediator = new Mediator();
- 
-  $author = $mediator->getAuthor();
-  $title = $mediator->getTitle();
- 
- 
-  $author->setAuthorLowerCase("hallo");
+class ChatterTwoColleague extends ChatterColleague {
+    private $chatter_two;
 
+    public function __construct($mediator_in) {
+        parent::__construct($mediator_in);
+    }
 
-  writeln($author->getAuthor());
-  writeln($title->getTitle());
+    public function getChatterTwo() {
+        return $this->chatter_two;
+    }
 
-  $title->setTitleLowerCase("huhu");
+    public function setChatterTwo($chatter_two_in) {
+        $this->chatter_two = $chatter_two_in;
+    }
+
+    public function setChatterTwoMessage($message) {
+        $this->setChatterTwo($message);
+        $this->getMediator()->change($this);
+    }
+}
+
+$mediator = new Mediator();
+$chatter_one = $mediator->getChatterOne();
+$chatter_two = $mediator->getChatterTwo();
  
- 
-  writeln($author->getAuthor());
-  writeln($title->getTitle());
+$chatter_one->setChatterOneMessage("hallo");
+echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
+echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
   
-  $author->setAuthorLowerCase("huhggu");
- 
-  writeln($author->getAuthor());
-  writeln($title->getTitle());
- 
-$author->setAuthorLowerCase("huhfffu");
- 
- 
-  writeln($author->getAuthor());
-  writeln($title->getTitle());
-
- $title->setTitleLowerCase("huhu");
- 
- 
-  writeln($author->getAuthor());
-  writeln($title->getTitle());
+$chatter_two->setChatterTwoMessage("hi!");
+echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
+echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
   
-  function writeln($line_in) {
-    echo $line_in.'<br/>';
-  }
+$chatter_one->setChatterOneMessage("alles klar?");
+echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
+echo "Chatter 2: " . $chatter_two->getChatterTwo() . " - ";
+ 
+$chatter_two->setChatterTwoMessage("jo");
+echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
+echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
+
+$chatter_two->setChatterTwoMessage("bei dir?");
+echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
+echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
