@@ -94,15 +94,3 @@ echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
 $chatter_two->setChatterTwoMessage("hi!");
 echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
 echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
-  
-$chatter_one->setChatterOneMessage("alles klar?");
-echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
-echo "Chatter 2: " . $chatter_two->getChatterTwo() . " - ";
- 
-$chatter_two->setChatterTwoMessage("jo");
-echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
-echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
-
-$chatter_two->setChatterTwoMessage("bei dir?");
-echo "Chatter 1: " . $chatter_one->getChatterOne() . " - ";
-echo "Chatter 2: " . $chatter_two->getChatterTwo() . "<br />";
