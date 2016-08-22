@@ -1,105 +1,89 @@
 <?php
 
-abstract class Firma {
-    abstract function getMitarbeiterInfo($mitarbeiter);
-    abstract function getMitarbeiterzaehler();
-    abstract function setMitarbeiterzaehler($zaehler);
-    abstract function addMitarbeiter($mitarbeiter);
-    abstract function removeMitarbeiter($mitarbeiter);
+abstract class Collection {
+    abstract function getDVDInfo($dvd);
+    abstract function getDVDZaehler();
 }
 
-class Mitarbeiter extends Firma {
-    private $name;
-
-    function __construct($name_in) {
-      $this->name = $name_in;
+class DVD extends Collection {
+    private $title;
+    function __construct($title_in) {
+      $this->title = $title_in;
     }
 
-    function getMitarbeiterInfo($mitarbeiter) {
-        if (1 == $mitarbeiter) {
-            return $this->name;
+    function getDVDInfo($dvd) {
+        if (1 == $dvd) {
+            return $this->title;
         }
         else {
             return false;
         }
     }
 
-    function getMitarbeiterzaehler() {
+    function getDVDZaehler() {
         return 1;
-    }
-
-    function setMitarbeiterzaehler($zaehler) {
-        return false;
-    }
-
-    function addMitarbeiter($mitarbeiter) {
-        return false;
-    }
-
-    function removeMitarbeiter($mitarbeiter) {
-        return false;
     }
 }
 
-class Chef extends Firma {
-    private $team = array();
+class Shelf extends Collection {
+    private $collection = array();
     private $zaehler;
 
     public function __construct() {
-        $this->setMitarbeiterzaehler(0);
+        $this->setDVDZaehler(0);
     }
 
-    public function getMitarbeiterzaehler() {
+    public function getDVDZaehler() {
         return $this->zaehler;
     }
 
-    public function setMitarbeiterzaehler($zaehler) {
+    public function setDVDZaehler($zaehler) {
         $this->zaehler = $zaehler;
     }
 
-    public function getMitarbeiterInfo($mitarbeiter) {   
-        if ($mitarbeiter <= $this->zaehler) {
-            return $this->team[$mitarbeiter]->getMitarbeiterInfo(1);
+    public function getDVDInfo($dvd) {   
+        if ($dvd <= $this->zaehler) {
+            return $this->collection[$dvd]->getDVDInfo(1);
         }
         else {
             return false;
         }
     }
 
-    public function addMitarbeiter($mitarbeiter) {
-        $this->setMitarbeiterzaehler($this->getMitarbeiterzaehler() + 1);
-        $this->team[$this->getMitarbeiterzaehler()] = $mitarbeiter;
-        return $this->getMitarbeiterzaehler();
+    public function addDVD($dvd) {
+        $this->setDVDZaehler($this->getDVDZaehler() + 1);
+        $this->collection[$this->getDVDZaehler()] = $dvd;
+        return $this->getDVDZaehler();
     }
 
-    public function removeMitarbeiter($mitarbeiter) {
+    public function removeDVD($dvd) {
         $counter = 0;
-        while (++$counter <= $this->getMitarbeiterzaehler()) {
-            if ($mitarbeiter->getMitarbeiterInfo(1) == $this->team[$counter]->getMitarbeiterInfo(1)) {
-                for ($x = $counter; $x < $this->getMitarbeiterzaehler(); $x++) {
-                    $this->team[$x] = $this->team[$x + 1];
+        while (++$counter <= $this->getDVDZaehler()) {
+            if ($dvd->getDVDInfo(1) == $this->collection[$counter]->getDVDInfo(1)) {
+                for ($x = $counter; $x < $this->getDVDZaehler(); $x++) {
+                    $this->collection[$x] = $this->collection[$x + 1];
                 }
-                $this->setMitarbeiterzaehler($this->getMitarbeiterzaehler() - 1);
+                $this->setDVDZaehler($this->getDVDZaehler() - 1);
             }
         }
-        return $this->getMitarbeiterzaehler();
+        return $this->getDVDZaehler();
     }
 }
 
-$mitarbeiter1 = new Mitarbeiter("Andreas Setraji");
-echo $mitarbeiter1->getMitarbeiterInfo(1) . "<br/>";
-$mitarbeiter2 = new Mitarbeiter("Frank Müller");
-echo $mitarbeiter2->getMitarbeiterInfo(1) . "<br/>";
-$mitarbeiter3 = new Mitarbeiter("Kurt Knorbelsack");
-echo $mitarbeiter3->getMitarbeiterInfo(1) . "<br/>";
-$chef = new Chef();
-$zaehler = $chef->addMitarbeiter($mitarbeiter1);
-echo $chef->getMitarbeiterInfo($zaehler) . "<br/>";
-$zaehler = $chef->addMitarbeiter($mitarbeiter2);
-echo $chef->getMitarbeiterInfo($zaehler) . "<br/>";
-$zaehler = $chef->addMitarbeiter($mitarbeiter3);
-echo $chef->getMitarbeiterInfo($zaehler) . "<br/>";
-$zaehler = $chef->removeMitarbeiter($mitarbeiter1);
-echo $chef->getMitarbeiterzaehler() . "<br/>";
-echo $chef->getMitarbeiterInfo(1) . "<br/>";
-echo $chef->getMitarbeiterInfo(2) . "<br/>";
+$dvd1 = new DVD("Braveheart");
+$dvd2 = new DVD("Pulp Fiction");
+$dvd3 = new DVD("Alien");
+$shelf = new Shelf();
+
+echo "DVD-Regal befüllen:<br/>";
+$zaehler = $shelf->addDVD($dvd1);
+echo "Film '" . $shelf->getDVDInfo($zaehler) . "' hinzugefügt<br/>";
+$zaehler = $shelf->addDVD($dvd2);
+echo "Film '" . $shelf->getDVDInfo($zaehler) . "' hinzugefügt<br/>";
+$zaehler = $shelf->addDVD($dvd3);
+echo "Film '" . $shelf->getDVDInfo($zaehler) . "' hinzugefügt<br/>";
+echo "Anzahl der Filme: " . $shelf->getDVDZaehler() . "<br/>";
+$zaehler = $shelf->removeDVD($dvd1);
+echo "Anzahl der Filme, nachdem Film 1 gelöscht wurde: " . $shelf->getDVDZaehler() . "<br/>";
+echo "Info zu Film 1: '" . $shelf->getDVDInfo(1) . "'<br/>";
+echo "Info zu Film 2: '" . $shelf->getDVDInfo(2) . "'<br/>";
