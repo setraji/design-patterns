@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Erstellung einer DVD-Sammlung
+// Die DVD-Instanzen werden nicht vom Clienten direkt, 
+// sondern bei Bedarf über die Flyweight-Klasse erstellt
+
 class FlyweightDVD {
     private $title;
 
@@ -72,3 +76,10 @@ $flyweightDVDShelf2->addDVD($flyweightDVD2);
 $flyweightDVDShelf1->addDVD($flyweightDVD3);
 echo "DVD-Regal 1:<br/>" . $flyweightDVDShelf1->showDVDs();
 echo "DVD-Regal 2:<br/>" . $flyweightDVDShelf2->showDVDs();
+
+// Ergebnis:
+// DVD-Regal 1:
+// Braveheart
+// Alien
+// DVD-Regal 2:
+// Pulp Fiction
