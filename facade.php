@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Zusammenfassung verschiedener Arbeitsschritte
+// Es soll über eine Schnittstelle ein vereinfachter Zugriff 
+// auf ein Subsystem verschiedener Klassen gewährleistet sein.
+
 // the facade interface
 class OfficeFacade {
     public static function textVerarbeitung() {
@@ -56,3 +60,15 @@ echo "Kündigung ausdrucken:<br/>";
 $kuendigen->drucken();
 echo "Kündigung unterschreiben:<br/>";
 $kuendigen->unterschreiben();
+
+// Ergebnis:
+// Kündigung schreiben:
+// Dokument öffnen
+// Dokument bearbeiten
+// Dokument speichern
+// Kündigung ausdrucken:
+// Drucker konfigurieren
+// Papier einlegen
+// Dokument ausdrucken
+// Kündigung unterschreiben:
+// Kündigung unterschreiben
