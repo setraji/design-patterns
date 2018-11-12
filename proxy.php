@@ -1,5 +1,10 @@
 <?php
 
+// Beispiel: Überprüfung eines Passworts
+// Eine Klasse schickt seinen Stellvertreter vor welcher zuerst ein Passwort überprüfen soll, 
+// bevor etwas ausgegeben wird..
+
+// Die Stellvertreter-Klasse:
 class ProxyAccessTest {
     private $access; 
     private $phrase;
@@ -24,12 +29,14 @@ class ProxyAccessTest {
     }
 }
 
+// Das reale Subjekt:
 class AccessTest {
     public function getPhraseOrDenial($phrase) {
         echo $phrase;
     }
 }
 
+// Das Subjekt:
 class Access {
     private $phrase;
 
@@ -42,7 +49,10 @@ class Access {
     }
 }
 
-
+// Test:
 $access = new Access("It works...!");
 $proxyAccessTest = new ProxyAccessTest($access, "foobar");
 $proxyAccessTest->getPhraseOrDenial();
+
+// Ergebnis:
+// It works...!
