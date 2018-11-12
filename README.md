@@ -51,6 +51,7 @@ Proxy
 Das Muster ist in der Lage ein anderes Objekt zu steuern
 
 3. Verhaltensmuster
+
 Observer 	
 Greift bei bestimmten Ereignis ein
 Memento 	
