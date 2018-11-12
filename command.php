@@ -1,5 +1,7 @@
 <?php
 
+// Beispiel: Verschiedene Mitarbeiter arbeiten mit verschiedenen Druckern
+
 // the command interface
 interface IDruckBefehl {
     public function execute();
@@ -124,3 +126,10 @@ $vorstand->drucken($schwarzweiss);
 $praktikant->drucken($pdf);
 $programmierer->drucken($farbig);
 $sekretaerin->drucken($nadel);
+
+// Schwarzweiss-Drucker wird konfiguriert!
+// Es wird schwarz-weiss ausgedruckt!
+// Es wird gespeichert!
+// Es wird farbig ausgedruckt!
+// Nadel-Drucker wird umständlich konfiguriert!
+// Es wird ordentlich genadelt!
