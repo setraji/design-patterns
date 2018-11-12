@@ -1,5 +1,8 @@
 <?php
 
+// Beispiel: Den passenden Algorithmus verwenden
+// Es wird eine Kette von Objekten abgearbeitet bis eins davon die richtige Antwort geben kann
+
 interface Handler {
 	public function setSuccessor($nextService);
 	public function handleRequest($request);
