@@ -1,5 +1,10 @@
 <?php
 
+// Beispiel: Das Erhitzen und Abkühlen von Wasser
+// Wird das bereits abgekühlte Wasser weiterhin abgekühlt, ist es eiskalt. 
+// Wird das kalte Wasser erhitzt, ist es warm. Wird das warme Wasser weiter erhitzt, ist es heiß, usw..
+
+// Das Interface:
 interface Zustand {
 	public function abkuehlen($context);
 	public function erhitzen($context);
@@ -25,6 +30,7 @@ class WasserAbkuehlen implements Zustand {
 	}
 }
 
+// Die Kontext-Klasse:
 class Wasser {
 	private $zustand = null;
 	public function __construct() {
@@ -41,6 +47,7 @@ class Wasser {
 	}
 }
 
+// Test:
 $context = new Wasser();
 echo "Abkühlen: " . $context->abkuehlen() . "<br/>";
 echo "Erhitzen: " . $context->erhitzen() . "<br/>";
@@ -48,3 +55,11 @@ echo "Abkühlen: " . $context->abkuehlen() . "<br/>";
 echo "Erhitzen: " . $context->erhitzen() . "<br/>";
 echo "Erhitzen: " . $context->erhitzen() . "<br/>";
 echo "Abkühlen: " . $context->abkuehlen() . "<br/>";
+
+// Ergebnis:
+// Abkühlen: Eiskaltes Wasser
+// Erhitzen: Warmes Wasser
+// Abkühlen: Kaltes Wasser
+// Erhitzen: Warmes Wasser
+// Erhitzen: Heißes Wasser
+// Abkühlen: Kaltes Wasser
