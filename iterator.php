@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Ausgabe eines Arrays
+// Mithilfe der Iterator-Methoden (siehe auch SPL) und eines Zeigers ist es möglich 
+// ein Array innerhalb einer Klasse zu bearbeiten..
+
 class Cars implements Iterator {
     private $pointer = 0;
     private $array = array();
