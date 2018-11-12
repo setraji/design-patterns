@@ -22,11 +22,11 @@ II.Arten von Entwurfsmustern:
 
 1. Erzeugungsmuster:
 
-Singleton: 	
+a. Singleton: 	
 - Stellt sicher, dass von einer Klasse genau ein Objekt existiert, dieses ist global verfügbar (= Antipattern)
-Prototype: 	
+b. Prototype: 	
 - Neue Instanzen werden aufgrund prototypischer Instanzen erzeugt, dabei wird die Vorlage kopiert und an neue Bedürfnisse angepasst
-Factory Method: 	
+c. Factory Method: 	
 - Erzeugt ein Objekt durch Aufruf einer Methode anstatt durch direkten Aufruf eines Konstruktors
 Builder: 	
 - Trennt die Konstruktion komplexer Objekte von deren Repräsentationen
