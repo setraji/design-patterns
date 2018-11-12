@@ -3,10 +3,10 @@
 I. Entwurfsprinzipien (SOLID):
 
 1. Single-Responsibility-Prinzip:
-Jede Klasse soll nur eine einzige Verantwortung haben, um zukünftige Veränderungen zu vermeiden
+- Jede Klasse soll nur eine einzige Verantwortung haben, um zukünftige Veränderungen zu vermeiden
 
 2. Open-Closed-Prinzip:
-Klassen und Methoden sollen für Erweiterungen offen, für Veränderungen jedoch geschlossen sein
+- Klassen und Methoden sollen für Erweiterungen offen, für Veränderungen jedoch geschlossen sein
 
 3. Liskovsches Substitutionsprinzip:
 Was für Superklassen gilt soll auch für abgeleitete Subklassen gelten, damit diese auch korrekt ausgeführt werden (= Ersetzbarkeitsprinzip)
