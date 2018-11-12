@@ -1,5 +1,11 @@
 <?php
 
+// Beispiel: Upper/Lower String
+// Wenn die Unterklasse TemplateLower aufgerufen wird, fehlt eine Methode, 
+// es wird an dieser Stelle null zurückgegeben. Hierbei handelt es sich um einen sogenannten Hook.
+// Ansonsten werden die Eingaben entsprechend innerhalb der Unterklassen bearbeitet.
+
+// Die abstrakte Klasse:
 abstract class TemplateAbstract {
     public final function showName($name_in) {
         $first_name = $name_in->getFirstName();
@@ -22,6 +28,7 @@ abstract class TemplateAbstract {
     } 
 }
 
+// Die konkreten Unterklassen:
 class TemplateUpper extends TemplateAbstract {
     public function editFirstName($first_name) {
         return strtoupper($first_name); 
@@ -38,6 +45,7 @@ class TemplateLower extends TemplateAbstract {
     }
 }
 
+// Die Kontext-Klasse:
 class MyName {
     private $first_name;
     private $last_name;
@@ -56,9 +64,14 @@ class MyName {
     }
 }
 
+// Test:
 $my_name = new MyName("Andreas", "Setraji");
 $upper = new TemplateUpper();  
 $lower = new TemplateLower();
 
 echo $upper->showName($my_name);
 echo $lower->showName($my_name);
+
+// Ergebnis:
+// ANDREAS SETRAJI
+// andreas
