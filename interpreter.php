@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Textüberprüfung mittels regulärem Ausdruck
+// In diesem Beispiel ist die erste Anfrage valide, die zweite nicht, 
+// da das Ausrufezeichen in diesem Fall nicht Bestandteil des regulären Ausdrucks ist. 
+
 class Interpreter {  
     private $phrase;
 
