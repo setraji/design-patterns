@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Synchronisation eines Chats
+// Gibt Chatter 1 etwas ein, soll der eingegebene Text bei Chatter 1 
+// und bei Chatter 2 ausgegeben werden und umgekehrt..
+
 class Mediator {
     private $chatter_one;
     private $chatter_two;
