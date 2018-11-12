@@ -2,19 +2,19 @@
 
 I. Entwurfsprinzipien (SOLID):
 
-1. Single-Responsibility-Prinzip
+1. Single-Responsibility-Prinzip:
 Jede Klasse soll nur eine einzige Verantwortung haben, um zukünftige Veränderungen zu vermeiden
 
-2. Open-Closed-Prinzip
+2. Open-Closed-Prinzip:
 Klassen und Methoden sollen für Erweiterungen offen, für Veränderungen jedoch geschlossen sein
 
-3. Liskovsches Substitutionsprinzip
+3. Liskovsches Substitutionsprinzip:
 Was für Superklassen gilt soll auch für abgeleitete Subklassen gelten, damit diese auch korrekt ausgeführt werden (= Ersetzbarkeitsprinzip)
 
-4. Interface-Segregation-Prinzip
+4. Interface-Segregation-Prinzip:
 Interfaces sollen nur das beinhalten was ihre Clients tatsächlich benötigen
 
-5. Dependency-Inversion-Prinzip
+5. Dependency-Inversion-Prinzip:
 Module verschiedener Ebenen sollen von Abstraktionen abhängen
 Details sollen von Abstraktionen abhängen, nicht umgekehrt
 
@@ -22,9 +22,9 @@ II.Arten von Entwurfsmustern:
 
 1. Erzeugungsmuster:
 
-Singleton 	
+Singleton: 	
 Stellt sicher, dass von einer Klasse genau ein Objekt existiert, dieses ist global verfügbar (= Antipattern)
-Prototype 	
+Prototype: 	
 Neue Instanzen werden aufgrund prototypischer Instanzen erzeugt, dabei wird die Vorlage kopiert und an neue Bedürfnisse angepasst
 Factory Method 	
 Erzeugt ein Objekt durch Aufruf einer Methode anstatt durch direkten Aufruf eines Konstruktors
