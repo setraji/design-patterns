@@ -1,5 +1,8 @@
 <?php
 
+// Beispiel: Buchung eines Fluges
+// Es soll dabei möglich sein ein Gepäckstück, ein Snack und eine Rücktrittsversicherung hinzuzubuchen..
+
 class FlyTicket {
 	private $fly;
 	private $price;
@@ -109,3 +112,14 @@ echo $decorator->showOrder() . "<br/>";
 echo "Delete additional services:<br/>";
 $decorator->resetOrder();
 echo $decorator->showOrder() . "<br/>";
+
+// Flyticket:
+// Cologne - Madrid, Price: 250 Euro
+// + Baggage:
+// Cologne - Madrid + Baggage, Price: 300 Euro
+// + Insurance:
+// Cologne - Madrid + Baggage + Insurance, Price: 320 Euro
+// + Snack:
+// Cologne - Madrid + Baggage + Insurance + Snack, Price: 330 Euro
+// Delete additional services
+// Cologne - Madrid, Price: 250 Euro
