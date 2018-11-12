@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: Fussball-Liga - Mannschaft - Spieler
+// Eine Fussball-Liga wird aus verschiedenen Mannschaften zusammengesetzt, 
+// zudem spielen mehrere verschiedene Spieler in einer Liga..
+
 abstract class Clubs {
     abstract function showClubName();
 }
