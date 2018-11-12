@@ -1,5 +1,9 @@
 <?php
 
+// Beispiel: DVD-Sammlung
+// Das Regal (Kompositum) kann DVDs hinzufügen, zählen und löschen. 
+// Die DVDs (Blätter) selbst können dies nicht.
+
 abstract class Collection {
     abstract function getDVDInfo($dvd);
     abstract function getDVDZaehler();
@@ -87,3 +91,12 @@ $zaehler = $shelf->removeDVD($dvd1);
 echo "Anzahl der Filme, nachdem Film 1 gelöscht wurde: " . $shelf->getDVDZaehler() . "<br/>";
 echo "Info zu Film 1: '" . $shelf->getDVDInfo(1) . "'<br/>";
 echo "Info zu Film 2: '" . $shelf->getDVDInfo(2) . "'<br/>";
+
+// DVD-Regal befüllen:
+// Film 'Braveheart' hinzugefügt
+// Film 'Pulp Fiction' hinzugefügt
+// Film 'Alien' hinzugefügt
+// Anzahl der Filme: 3
+// Anzahl der Filme, nachdem Film 1 gelöscht wurde: 2
+// Info zu Film 1: 'Pulp Fiction'
+// Info zu Film 2: 'Alien'
