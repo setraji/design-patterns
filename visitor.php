@@ -1,11 +1,17 @@
 <?php
 
+// Beispiel: Verschiedene Reisemöglichkeiten
+// Beim Fliegen und Fahren gibt es jeweils ein Ziel und ein geeignetes Transportmittel, 
+// beim Fahren soll zusätzlich noch die Anzahl der Pausen behandelt werden..
+
+// Die abstrakten Element-Klassen:
 abstract class Reisen {
     abstract public function getReiseZiel();
     abstract public function getTransportmittel();
     abstract public function empfangen(Besucher $besucher);
 }
 
+// Die konkreten Element-Klassen:
 class Fliegen extends Reisen {
     private $reiseziel;
     private $transportmittel;
@@ -56,11 +62,13 @@ class Fahren extends Reisen {
     }
 }
 
+// Die abstrakte Besucher-Klasse:
 abstract class Besucher {
     abstract public function besucheFliegen(Fliegen $fliegen);
     abstract public function besucheFahren(Fahren $fahren);
 }
 
+// Eine konkrete Besucher-Klasse:
 class Reisender extends Besucher {
     private $ausgabe = null;
 
@@ -88,6 +96,7 @@ class Reisender extends Besucher {
     }
 }
 
+// Test:
 $reise1 = new Fliegen("Madrid", "Flugzeug");
 $reise2 = new Fahren("Hamburg", "Auto", 2);
 $reisender = new Reisender();
@@ -101,3 +110,11 @@ function empfangeBesucher(Reisen $reisen, Besucher $besucher)
 {
     $reisen->empfangen($besucher);
 }
+
+// Ergebnis:
+// Reiseziel: Madrid
+// Transportmittel: Flugzeug
+
+// Reiseziel: Hamburg
+// Transportmittel: Auto
+// Pausen: 2
