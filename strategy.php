@@ -1,11 +1,14 @@
 <?php
 
-// the strategy interface
+// Beispiel: Verschiedene Rechenoperationen
+// Es soll je nach Bedarf der passende Algorithmus angewendet werden...
+
+// Das Interface:
 interface StrategyInterface {
     public function calculate($values);
 }
 
-// various algorithms
+// Die Algorithmen:
 class AddAlgorithm implements StrategyInterface {
     public function calculate($values) {
         $calculator = $values->getValueOne() + $values->getValueTwo();
@@ -20,7 +23,7 @@ class MultiplyAlgorithm implements StrategyInterface {
     }
 }
 
-// the strategy class
+// Die Strategie-Klasse:
 class StrategyContext {
     private $strategy = null;
     public function __construct($strategy_case) {
@@ -38,7 +41,7 @@ class StrategyContext {
     }
 }
 
-// the client
+// Die Kontext-Klasse:
 class Calculator {
     private $value_one;
     private $value_two;
@@ -54,7 +57,7 @@ class Calculator {
     }
 }
 
-// test:
+// Test:
 $values = new Calculator(10, 15);
 $strategyContextA = new StrategyContext("A");
 $strategyContextM = new StrategyContext("M");
@@ -63,3 +66,9 @@ echo "Wert 1: " . $values->getValueOne() . "<br/>";
 echo "Wert 2: " . $values->getValueTwo() . "<br/>";
 echo "Werte addieren: " . $strategyContextA->showValue($values) . "<br/>";
 echo "Werte multiplizieren: " . $strategyContextM->showValue($values);
+
+// Ergebnis:
+// Wert 1: 10
+// Wert 2: 15
+// Werte addieren: 25
+// Werte multiplizieren: 150
